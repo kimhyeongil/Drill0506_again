@@ -23,8 +23,10 @@ def handle_events():
             running = False
         elif event.type == SDL_MOUSEMOTION:
             mx, my = event.x, TUK_HEIGHT - 1 - event.y
-        elif event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT:  # 마우스 클릭이 있으면
-            points.append((event.x, TUK_HEIGHT - 1 - event.y)) # 클릭된 위치를 새로운 점으로 추가
+        elif (
+            event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT
+        ):  # 마우스 클릭이 있으면
+            points.append((event.x, TUK_HEIGHT - 1 - event.y))  # 클릭된 위치를 새로운 점으로 추가
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
     pass
@@ -88,8 +90,10 @@ def update_world():
             cx, cy = hx, hy  # 캐릭터 위치를 목적지 위치와 강제로 정확히 일치시킴.
             del points[0]  # 목표 지점에 도달, 더 이상 필요없는 점 삭제
             set_new_target_arrow()
-    elif points: # 목표 지점이 없을 때, 새로운 손이 생기면
+    elif points:  # 목표 지점이 없을 때, 새로운 손이 생기면
         set_new_target_arrow()
+
+
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 hide_cursor()
 load_resources()
